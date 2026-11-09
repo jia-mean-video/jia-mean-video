@@ -208,7 +208,16 @@ var K="jm_",U=null,D=null,isAdmin=false,guest=false,back=null,cur="全部",q="",
 function ls(k,v){try{if(v===undefined){var x=localStorage.getItem(k);return x?JSON.parse(x):null}localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
 var DEL0=ls(K+"del")||[];items=items.filter(function(i){return DEL0.indexOf(i.t)<0});
 (ls(K+"x")||[]).forEach(function(i){i.dir=i.dir||"待公布";i.cast=i.cast||["待公布"];i.y=i.y||2026;i.len=i.len||100;i.p=i.p===undefined?49:i.p;items.push(i)});
+var PIMG={
+"星際大亂鬥":"img/太空.jpg",
+"星際大亂鬥2：黑洞迴廊":"img/黑洞大作戰.jpg",
+"時間裂縫":"img/時間縫隙.png",
+"機械之心":"img/鋼鐵之心.jpg",
+"火星來電":"img/火星.jpg"
+};
+items.forEach(function(i){if(PIMG[i.t])i.img=PIMG[i.t]});
 var IMG0=ls(K+"img")||{};items.forEach(function(i){if(IMG0[i.t])i.img=IMG0[i.t]});
+
 var PR0=ls(K+"pr")||{};items.forEach(function(i){if(PR0[i.t]!==undefined)i.p=PR0[i.t]});
 var FR0=ls(K+"fr")||{};items.forEach(function(i){if(FR0[i.t]!==undefined)i.f=FR0[i.t]?1:0});
 function hs(s){var h=0;for(var k=0;k<s.length;k++)h=(h*31+s.charCodeAt(k))>>>0;return h}
