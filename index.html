@@ -491,7 +491,12 @@ var ta=document.createElement("td");ta.style.cssText="white-space:normal;min-wid
 if(r.drop){ta.appendChild(ab("下架",function(){var c=ls(K+"off")||[];if(c.indexOf(r.t)<0)c.push(r.t);ls(K+"off",c);abcList();toast("已下架《"+r.t+"》")}))}
 tr.appendChild(ta);tb.appendChild(tr)});
 var top=rows.filter(function(r){return r.cl==="A"&&!r.i.f}).slice(0,3).map(function(r){return"《"+r.t+"》"}).join("、")||"尚無";
-
+var ST={
+A:{n:"A 類・主力片",s:["首頁主視覺與「為你推薦」優先露出","有續集的片，在前作播放頁推續集","維持原價，不打折，守住毛利","與同導演、同演員的片做關聯推薦"],k:"KPI：維持每月營收占比 70%"},
+B:{n:"B 類・穩定片",s:["購物車組合促銷：買 3 部折 NT$20","放進類型分類的「編輯精選」","在 A 類片的播放頁交叉推薦","週末限時折扣，把 B 推向 A"],k:"KPI：每月升級 1～2 部到 A 類"},
+C:{n:"C 類・長尾片",s:["先排入「本週免費」輪播，當引流片","測試降價 NT$10，觀察 2 週銷量","免費或降價後仍低於授權成本者下架","省下的授權費改用來引進新片"],k:"KPI：授權成本未回收者下架"}};
+$("abc-str").innerHTML=["A","B","C"].map(function(k){var e=ST[k],t=rows.filter(function(r){return r.cl===k&&!r.i.f}).slice(0,3).map(function(r){return"《"+r.t+"》"}).join("、")||"無";
+return'<div class="pc" style="border-top-color:'+(k==="A"?"var(--wine)":k==="B"?"var(--gold)":"var(--muted)")+'"><b>'+e.n+'</b><small>'+cn[k]+' 部・營收占比 '+(sh[k]/tot*100).toFixed(0)+'%</small><ul style="margin:6px 0;padding-left:18px">'+e.s.map(function(x){return"<li>"+x+"</li>"}).join("")+'</ul><small>代表片：'+t+'</small><small>'+e.k+'</small></div>'}).join("");
 $("abc-sum").textContent="總營收 NT$"+tot.toLocaleString()+"。A 類 "+cn.A+" 部，貢獻 "+(sh.A/tot*100).toFixed(0)+"% 營收；B 類 "+cn.B+" 部，貢獻 "+(sh.B/tot*100).toFixed(0)+"%；C 類 "+cn.C+" 部，貢獻 "+(sh.C/tot*100).toFixed(0)+"%。【經營建議】① 主力片（"+top+" 等）優先放首頁與推薦區。② "+(drop.length?"有 "+drop.length+" 部 C 類片營收低於授權成本，若全數下架，每月可省約 NT$"+(drop.length*LIC).toLocaleString()+" 授權費，可改用來引進新片。":"目前沒有營收低於授權成本的片。")+"③ 每月重新檢視一次分類，片單會隨購買數變動。"}
 /* admin */
 function allD(){var a=ls(K+"a")||{};return Object.keys(a).map(function(k){var d=ls(K+"d_"+k)||{};return{plan:d.plan||null,history:d.history||[],rent:d.rent||{}}})}
