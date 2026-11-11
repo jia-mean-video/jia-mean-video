@@ -499,7 +499,7 @@ var mx=Math.max.apply(null,rows.map(function(r){return r[1]}).concat([1]));
 rows.forEach(function(r){var d=document.createElement("div"),l=document.createElement("span"),b=document.createElement("i"),n=document.createElement("b");d.className="br";l.textContent=r[0];b.style.width=(r[1]/mx*100)+"%";n.textContent=r[1]+" "+unit;d.appendChild(l);d.appendChild(b);d.appendChild(n);el.appendChild(d)})}
 function salesData(){var rc={},hc={};
 allD().forEach(function(d){Object.keys(d.rent||{}).forEach(function(t){rc[t]=(rc[t]||0)+1});(d.history||[]).forEach(function(h){hc[h.t]=(hc[h.t]||0)+1})});
-return items.map(function(i){var base=(i.f||i.x)?0:20+hs(i.t+"s")%80,sold=base+(rc[i.t]||0),views=(i.f?150+hs(i.t+"v")%200:sold*5+hs(i.t+"v")%50)+(hc[i.t]||0);
+return items.map(function(i){var base=(i.f||i.x)?0:Math.round(80+3200*Math.pow((hs(i.t+"s")%1000)/1000,2.5)),sold=base+(rc[i.t]||0),views=(i.f?150+hs(i.t+"v")%200:sold*5+hs(i.t+"v")%50)+(hc[i.t]||0);
 return{i:i,t:i.t,g:i.g,p:i.p||0,sold:sold,views:views,rev:sold*(i.p||0)}})}
 function sumText(sd){var a=0,r=0,v=0;sd.forEach(function(x){a+=x.sold;r+=x.rev;v+=x.views});return"累計售出 "+a+" 部・營收 NT$"+r.toLocaleString()+"・總觀看 "+v+" 次（含示範數據）"}
 function statP(){if(!isAdmin)return;var sd=salesData(),gg={};
