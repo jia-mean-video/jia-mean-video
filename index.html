@@ -149,7 +149,24 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:v
 <small>分類依據：單片購買營收（售出次數 × 售價），由高到低累計。累計營收占比未達 70% 為 A 類（主力片）、未達 90% 為 B 類（穩定片），其餘為 C 類（長尾片）。</small><br>
 <small>示範假設：每部電影每月授權成本 NT$1,200。C 類且營收低於授權成本的片，會建議評估下架。免費片視為引流，不建議下架。所有銷售數據均含示範數據。</small></div>
 <h3 style="margin:18px 0 10px">ABC 行銷策略</h3><div class="prices" id="abc-str" style="max-width:1000px"></div><div style="overflow-x:auto"><table class="tb" id="abc-t"></table></div></div></div>
-<div class="view" id="v-aplans"><div class="pg"><h2>單片銷售統計</h2><p class="lead" id="ap-total"></p><h3>熱銷電影（售出部數）</h3><div id="ap-bars"></div><h3 style="margin:22px 0 10px">單片營業額排行（元）</h3><div id="ap-rev"></div><h3 style="margin:22px 0 10px">各類型營收（元）</h3><div id="ap-g"></div></div></div>
+<div class="view" id="v-aplans">
+    <div class="pg">
+        <h2>單片銷售統計</h2>
+        <p class="lead" id="ap-total"></p>
+
+        <!-- 新增這一行 -->
+        <div class="prices" id="ap-kpi"></div>
+
+        <h3>熱銷電影（售出部數）</h3>
+        <div id="ap-bars"></div>
+
+        <h3 style="margin:22px 0 10px">單片營業額排行（元）</h3>
+        <div id="ap-rev"></div>
+
+        <h3 style="margin:22px 0 10px">各類型營收（元）</h3>
+        <div id="ap-g"></div>
+    </div>
+</div>
 <div class="view" id="v-atop"><div class="pg"><h2>熱門電影</h2><p class="lead" id="at-total"></p><div id="at-bars"></div></div></div>
 <div class="view" id="v-aoff"><div class="pg"><h2>電影上下架</h2><p class="lead">下架後，片單、推薦與免費區都不會顯示。每部電影都可以在右側修改售價。</p><div class="cur" id="gcount" style="max-width:900px"></div>
 <div class="box" style="max-width:520px;margin-bottom:22px"><h3>新增電影</h3>
